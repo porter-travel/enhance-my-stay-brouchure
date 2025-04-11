@@ -178,7 +178,7 @@ export default function ContactPage() {
       {/* CONTACT FORM SECTION */}
       <section className="bg-white py-20 px-6 md:px-12">
         <div className="max-w-3xl mx-auto">
-          <form netlify onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Name

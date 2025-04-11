@@ -1,0 +1,55 @@
+<html>
+<head></head>
+<body>
+<form data-netlify="true" class="space-y-6">
+    <div>
+        <label for="name" >
+            Name
+        </label>
+        <input
+                type="text"
+                name="name"
+                id="name"
+                required
+        />
+    </div>
+    <div>
+        <label for="email" className="block text-sm font-medium text-gray-700">
+            Email
+        </label>
+        <input
+                type="email"
+                name="email"
+                id="email"
+                required
+        />
+    </div>
+    <div>
+        <label for="message" className="block text-sm font-medium text-gray-700">
+            Message
+        </label>
+        <textarea
+                name="message"
+                id="message"
+                rows={5}
+        ></textarea>
+    </div>
+    {/* Honeypot for spam protection */}
+    <div class="hidden">
+        <label for="honeypot" class="block text-sm font-medium text-gray-700">
+            Leave this field empty
+        </label>
+        <input
+                type="text"
+                name="honeypot"
+                id="honeypot"
+        />
+    </div>
+    <div class="text-center">
+        <Button type="submit" size="lg" className="bg-black hover:bg-black text-white">
+            Send Message
+        </Button>
+    </div>
+</form>
+</body>
+</html>
