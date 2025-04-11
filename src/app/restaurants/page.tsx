@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion} from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ChevronDown,
-  PlayCircle,
-  Coffee,
   ClipboardCheck,
   DollarSign,
   Menu,
@@ -21,6 +19,8 @@ import {
   Tickets,
   Wine,
 } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function EnhanceMyStayRestaurantLandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -31,9 +31,9 @@ export default function EnhanceMyStayRestaurantLandingPage() {
       {/* HEADER */}
       <header className="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur shadow-md py-6 px-6 md:px-12">
         <div className="max-w-4xl mx-auto flex items-center gap-4">
-          <a href="/">
-            <img src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
-          </a>
+          <Link href="/">
+            <Image src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
+          </Link>
           <div className="hidden md:flex items-center space-x-6 ml-auto">
             <div className="relative">
               <button
@@ -168,7 +168,7 @@ export default function EnhanceMyStayRestaurantLandingPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative z-10"
             >
-              <img
+              <Image
                 src="/images/restaurant-hero.png"
                 alt="Restaurant Upsell Demo Preview"
                 className="rounded-lg mx-auto"
@@ -282,7 +282,7 @@ export default function EnhanceMyStayRestaurantLandingPage() {
             </p>
           </div>
           <div>
-            <img
+            <Image
               src="/images/restaurant-prearrival.png"
               alt="Automated Pre-Arrival Outreach"
               className="rounded-lg mx-auto"
@@ -311,7 +311,7 @@ export default function EnhanceMyStayRestaurantLandingPage() {
             </p>
           </div>
           <div className="order-1 md:order-2">
-            <img
+            <Image
               src="/images/table-booking.png"
               alt="Pre-Book Tables"
               className="rounded-lg mx-auto"
@@ -340,7 +340,7 @@ export default function EnhanceMyStayRestaurantLandingPage() {
             </p>
           </div>
           <div>
-            <img
+            <Image
               src="/images/at-table-ordering.png"
               alt="At-Table Ordering Solutions"
               className="rounded-lg mx-auto"
@@ -361,7 +361,7 @@ export default function EnhanceMyStayRestaurantLandingPage() {
       Integrated with ResDiary
     </motion.h2>
     {/* ResDiary Logo moved directly under the header */}
-    <img
+    <Image
       src="/images/resdiary-logo.png"
       alt="ResDiary"
       className="w-40 mx-auto mb-8"
@@ -412,7 +412,7 @@ export default function EnhanceMyStayRestaurantLandingPage() {
           </p>
         </div>
         <div className="flex-shrink-0">
-          <img
+          <Image
             src="/images/resdiary-testimonial.jpg"
             alt="ResDiary Testimonial"
             className="w-40 h-40 object-cover rounded-lg"
@@ -464,10 +464,10 @@ export default function EnhanceMyStayRestaurantLandingPage() {
         <div className="max-w-4xl mx-auto px-6 md:px-12">
           <div className="flex flex-row justify-between items-center border-b border-gray-400 pb-6">
             <div className="flex flex-row items-center gap-4">
-              <img src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
+              <Image src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
             </div>
             <div className="flex flex-row items-center gap-4">
-              <img src="/images/mascot.png" alt="Enhance My Stay Mascot" className="h-16 w-auto object-contain" />
+              <Image src="/images/mascot.png" alt="Enhance My Stay Mascot" className="h-16 w-auto object-contain" />
             </div>
           </div>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-left">

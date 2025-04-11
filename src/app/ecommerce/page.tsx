@@ -13,6 +13,8 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 // Define a hero object for the ecommerce page
 const ecommerceHero = {
@@ -31,13 +33,14 @@ export default function EnhanceMyStayEcommerceLandingPage() {
       {/* HEADER */}
       <header className="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur shadow-md py-6 px-6 md:px-12">
         <div className="max-w-4xl mx-auto flex items-center gap-4">
-          <a href="/">
-            <img
+          <Link href="/">
+
+            <Image
               src="/images/logo.png"
               alt="Enhance My Stay logo"
               className="h-10"
             />
-          </a>
+          </Link>
           <div className="hidden md:flex items-center space-x-6 ml-auto">
             <div className="relative">
               <button
@@ -354,10 +357,10 @@ export default function EnhanceMyStayEcommerceLandingPage() {
         <div className="max-w-4xl mx-auto px-6 md:px-12">
           <div className="flex flex-row justify-between items-center border-b border-gray-400 pb-6">
             <div className="flex flex-row items-center gap-4">
-              <img src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
+              <Image src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
             </div>
             <div className="flex flex-row items-center gap-4">
-              <img src="/images/mascot.png" alt="Enhance My Stay Mascot" className="h-16 w-auto object-contain" />
+              <Image src="/images/mascot.png" alt="Enhance My Stay Mascot" className="h-16 w-auto object-contain" />
             </div>
           </div>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-left">

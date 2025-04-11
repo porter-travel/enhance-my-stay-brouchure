@@ -10,15 +10,15 @@ import {
   Cable,
   ClipboardCheck,
   DollarSign,
-  Home,
   Hotel,
   Building2,
   Menu,
   X,
   User,
-  Users,
   Gift,
 } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 // Helper function to choose proper article ("a" or "an") based on first letter.
 const getArticle = (label: string): string => {
@@ -78,13 +78,13 @@ export default function HomePage() {
       {/* HEADER */}
       <header className="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur shadow-md py-6 px-6 md:px-12">
         <div className="max-w-4xl mx-auto flex items-center gap-4">
-          <a href="/">
-            <img
+          <Link href="/">
+            <Image
               src="/images/logo.png"
               alt="Enhance My Stay logo"
               className="h-10"
             />
-          </a>
+          </Link>
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6 ml-auto">
             <div className="relative">
@@ -260,7 +260,7 @@ export default function HomePage() {
           </motion.h2>
           <p className="max-w-3xl mx-auto text-lg text-gray-700 mb-12">
             Our platform adapts seamlessly to your unique business needs—whether
-            you're in hospitality, retail, transport, or beyond. We deliver
+            you&rsquo;re in hospitality, retail, transport, or beyond. We deliver
             personalised, automated upsells that drive revenue and elevate
             customer experiences.
           </p>
@@ -533,15 +533,15 @@ export default function HomePage() {
           </motion.h2>
           <div className="flex flex-wrap justify-center gap-12">
             <div className="flex flex-col items-center">
-              <img src="/images/logo-zonal.png" alt="Zonal Hotel Solutions" className="h-16" />
+              <Image src="/images/logo-zonal.png" alt="Zonal Hotel Solutions" className="h-16" />
               <p className="mt-2 text-sm">Zonal Hotel Solutions</p>
             </div>
             <div className="flex flex-col items-center">
-              <img src="/images/logo-guestline.png" alt="Guestline" className="h-16" />
+              <Image src="/images/logo-guestline.png" alt="Guestline" className="h-16" />
               <p className="mt-2 text-sm">Guestline (Coming Soon)</p>
             </div>
             <div className="flex flex-col items-center">
-              <img src="/images/resdiary-logo.png" alt="ResDiary" className="h-16" />
+              <Image src="/images/resdiary-logo.png" alt="ResDiary" className="h-16" />
               <p className="mt-2 text-sm">ResDiary</p>
             </div>
           </div>
@@ -570,10 +570,10 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto px-6 md:px-12">
             <div className="flex flex-row justify-between items-center border-b border-gray-400 pb-6">
               <div className="flex flex-row items-center gap-4">
-                <img src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
+                <Image src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
               </div>
               <div className="flex flex-row items-center gap-4">
-                <img src="/images/mascot.png" alt="Enhance My Stay Mascot" className="h-16 w-auto object-contain" />
+                <Image src="/images/mascot.png" alt="Enhance My Stay Mascot" className="h-16 w-auto object-contain" />
               </div>
             </div>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-left">

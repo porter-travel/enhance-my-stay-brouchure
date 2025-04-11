@@ -1,25 +1,23 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ChevronDown,
   Clock3,
-  PlayCircle,
   Rocket,
   ThumbsUp,
   Wand2,
   MessageCircle,
   Users,
   Quote,
-  Home,
-  Hotel,
-  Building2,
   Menu,
   X,
 } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function EnhanceMyStayHotelLandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,9 +28,9 @@ export default function EnhanceMyStayHotelLandingPage() {
       {/* HEADER */}
       <header className="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur shadow-md py-6 px-6 md:px-12">
         <div className="max-w-4xl mx-auto flex items-center gap-4">
-          <a href="/">
-            <img src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
-          </a>
+          <Link href="/">
+            <Image src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
+          </Link>
           <div className="hidden md:flex items-center space-x-6 ml-auto">
             <div className="relative">
               <button
@@ -170,7 +168,7 @@ export default function EnhanceMyStayHotelLandingPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative z-10"
             >
-              <img
+              <Image
                 src="/images/demo-preview.png"
                 alt="Enhance My Stay demo preview"
                 className="rounded-lg mx-auto"
@@ -245,7 +243,7 @@ export default function EnhanceMyStayHotelLandingPage() {
             </p>
           </div>
           <div>
-            <img
+            <Image
               src="/images/airbnb-upsell.png"
               alt="Airbnb Pre-Arrival Upsell"
               className="rounded-lg mx-auto"
@@ -258,7 +256,7 @@ export default function EnhanceMyStayHotelLandingPage() {
       <section className="py-20 bg-[#FFF0E5]">
         <div className="max-w-4xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
           <div>
-            <img
+            <Image
               src="/images/digital-room-service.png"
               alt="Digital Room Service"
               className="rounded-lg mx-auto"
@@ -297,15 +295,15 @@ export default function EnhanceMyStayHotelLandingPage() {
           </motion.h2>
           <div className="flex flex-wrap justify-center gap-12">
             <div className="flex flex-col items-center">
-              <img src="/images/logo-zonal.png" alt="Zonal Hotel Solutions" className="h-16" />
+              <Image src="/images/logo-zonal.png" alt="Zonal Hotel Solutions" className="h-16" />
               <p className="mt-2 text-sm">Zonal Hotel Solutions</p>
             </div>
             <div className="flex flex-col items-center">
-              <img src="/images/logo-guestline.png" alt="Guestline" className="h-16" />
+              <Image src="/images/logo-guestline.png" alt="Guestline" className="h-16" />
               <p className="mt-2 text-sm">Guestline (Coming Soon)</p>
             </div>
             <div className="flex flex-col items-center">
-              <img src="/images/resdiary-logo.png" alt="ResDiary" className="h-16" />
+              <Image src="/images/resdiary-logo.png" alt="ResDiary" className="h-16" />
               <p className="mt-2 text-sm">ResDiary</p>
             </div>
           </div>
@@ -379,7 +377,7 @@ export default function EnhanceMyStayHotelLandingPage() {
                 </p>
               </div>
               <div className="flex-shrink-0">
-                <img
+                <Image
                   src="/images/the-heathcock.jpg"
                   alt="The Heathcock Hotel"
                   className="w-40 h-40 object-cover rounded-lg"
@@ -419,10 +417,10 @@ export default function EnhanceMyStayHotelLandingPage() {
         <div className="max-w-4xl mx-auto px-6 md:px-12">
           <div className="flex flex-row justify-between items-center border-b border-gray-400 pb-6">
             <div className="flex flex-row items-center gap-4">
-              <img src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
+              <Image src="/images/logo.png" alt="Enhance My Stay logo" className="h-10" />
             </div>
             <div className="flex flex-row items-center gap-4">
-              <img
+              <Image
                 src="/images/mascot.png"
                 alt="Enhance My Stay Mascot"
                 className="h-16 w-auto object-contain"
