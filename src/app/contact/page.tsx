@@ -27,7 +27,7 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e : any) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     await fetch("/contact-form.html", {
