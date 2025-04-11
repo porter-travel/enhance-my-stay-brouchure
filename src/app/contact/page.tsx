@@ -27,16 +27,22 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e : any) => {
+  const handleSubmit = async (e : React.FormEvent<HTMLFormElement> ) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.target as HTMLFormElement)
+    const formDataEntries = Object.fromEntries(formData.entries());
     await fetch("/contact-form.html", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
+      body: new URLSearchParams(
+          Object.entries(formDataEntries).reduce((acc, [key, value]) => {
+            if (typeof value === "string") acc[key] = value;
+            return acc;
+          }, {} as Record<string, string>)
+      ).toString(),
     });
     // Spam protection: if the hidden honeypot has content, consider the submission spam.
-    if (formData.honeypot) {
+    if (formData.get("honeypot")) {
       console.warn("Spam detected!");
       return;
     }
