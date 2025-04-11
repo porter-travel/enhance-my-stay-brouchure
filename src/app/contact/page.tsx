@@ -27,29 +27,40 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e : React.FormEvent<HTMLFormElement> ) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement)
-    const formDataEntries = Object.fromEntries(formData.entries());
-    await fetch("/contact-form.html", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(
-          Object.entries(formDataEntries).reduce((acc, [key, value]) => {
-            if (typeof value === "string") acc[key] = value;
-            return acc;
-          }, {} as Record<string, string>)
-      ).toString(),
-    });
-    // Spam protection: if the hidden honeypot has content, consider the submission spam.
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    // Spam protection first!
     if (formData.get("honeypot")) {
       console.warn("Spam detected!");
       return;
     }
-    console.log(formData);
-    alert("Thank you for your message! We'll be in touch soon.");
-    setFormData({ name: "", email: "", message: "", honeypot: "" });
+
+    // Convert FormData to URLSearchParams safely
+    const urlEncoded = new URLSearchParams();
+    for (const [key, value] of formData.entries()) {
+      if (typeof value === "string") {
+        urlEncoded.append(key, value);
+      }
+    }
+
+    try {
+      await fetch("/contact-form.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: urlEncoded.toString(),
+      });
+
+      alert("Thank you for your message! We'll be in touch soon.");
+      setFormData({ name: "", email: "", message: "", honeypot: "" });
+    } catch (error) {
+      alert("Oops! Something went wrong.");
+      console.error(error);
+    }
   };
+
 
   return (
     <div className="bg-gradient-to-b from-[#F7F8C6] via-white to-pink-100 text-gray-900 font-sans">
@@ -190,19 +201,21 @@ export default function ContactPage() {
       {/* CONTACT FORM SECTION */}
       <section className="bg-white py-20 px-6 md:px-12">
         <div className="max-w-3xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6" data-netlify="true">
+          <form onSubmit={handleSubmit} className="space-y-6" name="contactForm" data-netlify="true">
+            <input type="hidden" name="form-name" value="contactForm"/>
+
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                 Name
               </label>
               <input
-                type="text"
-                name="name"
-                id="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               />
             </div>
             <div>
@@ -210,13 +223,13 @@ export default function ContactPage() {
                 Email
               </label>
               <input
-                type="email"
-                name="email"
-                id="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               />
             </div>
             <div>
@@ -224,13 +237,13 @@ export default function ContactPage() {
                 Message
               </label>
               <textarea
-                name="message"
-                id="message"
-                rows={5}
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  name="message"
+                  id="message"
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               ></textarea>
             </div>
             {/* Honeypot for spam protection */}
@@ -239,12 +252,12 @@ export default function ContactPage() {
                 Leave this field empty
               </label>
               <input
-                type="text"
-                name="honeypot"
-                id="honeypot"
-                value={formData.honeypot}
-                onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+                  type="text"
+                  name="honeypot"
+                  id="honeypot"
+                  value={formData.honeypot}
+                  onChange={handleChange}
+                  className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               />
             </div>
             <div className="text-center">
